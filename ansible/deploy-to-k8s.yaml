@@ -1,0 +1,33 @@
+---
+- name: Deploy Application to AKS
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  vars:
+    k8s_manifests_path: "../kubernetes"
+    
+  tasks:
+    - name: Display deployment message
+      debug:
+        msg: "Deploying application to Azure Kubernetes Service"
+    
+    - name: Apply Kubernetes deployment
+      command: kubectl apply -f {{ k8s_manifests_path }}/deployment.yaml
+      register: deployment_result
+      
+    - name: Show deployment result
+      debug:
+        var: deployment_result.stdout_lines
+        
+    - name: Wait for pods to be ready
+      command: kubectl wait --for=condition=ready pod -l app=devops-web-app --timeout=300s
+      register: wait_result
+      
+    - name: Get service details
+      command: kubectl get svc devops-web-app-service
+      register: service_result
+      
+    - name: Display service information
+      debug:
+        var: service_result.stdout_lines
