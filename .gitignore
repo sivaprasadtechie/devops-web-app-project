@@ -1,0 +1,45 @@
+# Node modules and dependencies
+node_modules/
+
+# Log files
+*.log
+
+# Environment variables
+.env
+
+# macOS system files
+.DS_Store
+
+# VS Code settings folder
+.vscode/
+
+# Build or distribution folders (if any)
+dist/
+build/
+
+# Terraform state files and backups
+*.tfstate
+*.tfstate.backup
+
+# Terraform variable files containing sensitive info
+*.auto.tfvars
+
+# Ignore override files for Docker Compose (optional)
+docker-compose.override.yml
+
+# Ignore secrets folder if used
+**/secrets/*
+
+# Temporary files
+*.tmp
+
+# Coverage reports (for testing, if applicable)
+coverage/
+
+# IDE-specific files
+.idea/
+*.iml
+
+# System files
+Thumbs.db
+ehthumbs.db
