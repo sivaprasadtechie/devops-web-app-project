@@ -43,3 +43,4 @@ coverage/
 # System files
 Thumbs.db
 ehthumbs.db
+.terraform/
